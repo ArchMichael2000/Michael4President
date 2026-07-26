@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Political Policy Book: Version 97.8</title>
+<title>Political Policy Book: Version 97.9</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -183,8 +183,10 @@ body::before{
 #main{
   margin-left:var(--sidebar-w);
   flex:1;
+  min-width:0;
   min-height:100vh;
   position:relative;z-index:1;
+  overflow-wrap:break-word;
 }
 
 /* ── HERO ── */
@@ -925,7 +927,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
   <button id="mob-toggle" onclick="toggleSidebar()">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
-  <span id="mobile-header-title">Policy Book v97.8</span>
+  <span id="mobile-header-title">Policy Book v97.9</span>
   <button id="mobile-search-btn" onclick="openSearch()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
   </button>
@@ -937,7 +939,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- SIDEBAR -->
 <aside id="sidebar">
   <div id="sidebar-header">
-    <div class="version">Version 97.8 &nbsp;·&nbsp; Hearthism</div>
+    <div class="version">Version 97.9 &nbsp;·&nbsp; Hearthism</div>
     <h1>Political Policy Book</h1>
     <div class="tagline">"A society must be good and strong, or it will not remain good for long."</div>
   </div>
@@ -952,7 +954,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- MAIN -->
 <main id="main">
   <section id="hero">
-    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v97.8</div>
+    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v97.9</div>
     <h2>The Political Policy Book</h2>
     <p class="quote">"A society must be good and strong, or it will not remain good for long."</p>
     <div class="stat-row">
