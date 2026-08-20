@@ -1,0 +1,30 @@
+name: Apply v98.8 Acts package audit
+
+on:
+  push:
+    branches:
+      - acts-v98.8-package-audit
+    paths:
+      - .github/workflows/acts-v98-8-audit.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: acts-v98.8-package-audit
+          fetch-depth: 0
+      - name: Apply Acts package audit
+        run: python .github/acts_v98_8_audit.py
+      - name: Validate and commit
+        run: |
+          git config user.name "policybook-automation"
+          git config user.email "policybook-automation@users.noreply.github.com"
+          git add -- index.html
+          git diff --cached --check
+          git commit -m "Policybook v98.8: align Acts packages and enforce 14-policy cap"
+          git push origin HEAD:acts-v98.8-package-audit
