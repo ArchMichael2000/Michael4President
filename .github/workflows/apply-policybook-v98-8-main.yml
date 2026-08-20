@@ -1,0 +1,39 @@
+name: Apply Policybook v98.8 on main
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/apply-policybook-v98-8-main.yml
+      - .github/policybook_v98_8.py
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Apply migration
+        run: python .github/policybook_v98_8.py
+      - name: Verify and commit
+        shell: bash
+        run: |
+          grep -q 'Political Policy Book: Version 98.8' index.html
+          grep -q 'Right to Invent for Workers Act' index.html
+          grep -q 'Taxpayer Non-Subsidization of Pornography Act' index.html
+          grep -q 'Commercial Oligarchy Antitrust Clause' index.html
+          grep -q 'Common Ownership Competition Act' index.html
+          grep -q 'Constitutional Accountability and Public Standing Amendment' index.html
+          ! grep -q '98.7' index.html
+          git config user.name 'policybook-automation'
+          git config user.email 'policybook-automation@users.noreply.github.com'
+          rm -f .github/policybook_v98_8.py .github/workflows/apply-policybook-v98-8-main.yml .github/workflows/policybook-v98-8.yml
+          git add -- index.html .github/policybook_v98_8.py .github/workflows/apply-policybook-v98-8-main.yml .github/workflows/policybook-v98-8.yml
+          git diff --cached --check
+          git commit -m 'Policybook v98.8: add five approved policies'
+          git push origin HEAD:main
