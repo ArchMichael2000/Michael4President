@@ -1,5 +1,6 @@
 from pathlib import Path
 
+# One-shot v98.9 placement patch; version intentionally unchanged.
 path = Path('index.html')
 text = path.read_text(encoding='utf-8')
 version_count = text.count('98.9')
