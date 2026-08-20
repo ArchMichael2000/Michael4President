@@ -1,0 +1,28 @@
+name: Apply Policybook v98.9 Location Patch
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/policybook_v98_9_location_patch.py'
+      - '.github/workflows/policybook-v98-9-location-patch-main.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply patch
+        run: python .github/policybook_v98_9_location_patch.py
+      - name: Verify patch
+        run: |
+          grep -q 'Version 98.9' index.html
+          grep -q 'title:"Common Ownership Competition"' index.html
+          ! grep -q 'title:"Common Ownership Competition Act"' index.html
+      - name: Commit patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- index.html
+          git diff --cached --quiet || git commit -m 'Patch v98.9 policy placement'
+          git push
