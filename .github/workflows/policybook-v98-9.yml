@@ -1,0 +1,33 @@
+name: Apply Policybook v98.9
+on:
+  push:
+    branches: [policybook-v98.9-corporate-social-contract]
+    paths:
+      - '.github/policybook_v98_9.py'
+      - '.github/workflows/policybook-v98-9.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: policybook-v98.9-corporate-social-contract
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Apply migration
+        run: python .github/policybook_v98_9.py
+      - name: Commit Policybook
+        run: |
+          git config user.name "Michael"
+          git config user.email "allenmofficial@gmail.com"
+          git add -- index.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Policybook v98.9: add corporations social contract reform"
+            git push origin HEAD:policybook-v98.9-corporate-social-contract
+          fi
