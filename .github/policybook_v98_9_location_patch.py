@@ -1,81 +1,42 @@
 from pathlib import Path
 
-# One-shot v98.9 placement patch; version intentionally unchanged.
+# Syntax-only follow-up for the v98.9 placement patch. Version intentionally unchanged.
 path = Path('index.html')
 text = path.read_text(encoding='utf-8')
 version_count = text.count('98.9')
 if version_count == 0:
     raise SystemExit('Expected Policybook v98.9 markers')
 
-lines = text.splitlines(keepends=True)
+old = '      {title:"Retention Acknowledgement",sub:"Those who keep their people are honored. Those who churn them are named.",body:'
+idx = text.find(old)
+if idx < 0:
+    raise SystemExit('Retention Acknowledgement policy not found')
+line_end = text.find('\n', idx)
+if line_end < 0:
+    raise SystemExit('Retention Acknowledgement line ending not found')
+line = text[idx:line_end]
+if line.endswith('},'):
+    pass
+elif line.endswith('}'):
+    text = text[:line_end-1] + '},' + text[line_end:]
+else:
+    raise SystemExit('Unexpected Retention Acknowledgement line ending')
 
-def section_bounds(section_id):
-    hits = [i for i, line in enumerate(lines) if f'id:"{section_id}"' in line]
-    if len(hits) != 1:
-        raise SystemExit(f'Expected one {section_id}; found {len(hits)}')
-    start = hits[0]
-    ends = [i for i in range(start + 1, len(lines)) if '    id:"sec-' in lines[i]]
-    return start, (ends[0] if ends else len(lines))
-
-def pop_policy(title, section_id):
-    needle = f'{{title:"{title}",'
-    hits = [i for i, line in enumerate(lines) if needle in line]
-    if len(hits) != 1:
-        raise SystemExit(f'Expected one {title}; found {len(hits)}')
-    idx = hits[0]
-    start, end = section_bounds(section_id)
-    if not (start < idx < end):
-        raise SystemExit(f'{title} not in expected section {section_id}')
-    return lines.pop(idx)
-
-commercial = pop_policy('Commercial Oligarchy Antitrust Clause', 'sec-9')
-cartel = pop_policy('Cartel Restitution and Price-Fixing Penalty', 'sec-9')
-common = pop_policy('Common Ownership Competition Act', 'sec-banking')
-common = common.replace('title:"Common Ownership Competition Act"', 'title:"Common Ownership Competition"', 1)
-
-sec1_start, sec1_end = section_bounds('sec-1')
-closing = [i for i in range(sec1_start, sec1_end) if lines[i].strip() == ']']
-if not closing:
-    raise SystemExit('Could not find end of §1 policy list')
-lines[closing[-1]:closing[-1]] = [commercial, cartel, common]
-text = ''.join(lines)
-
-text = text.replace('Common Ownership Competition Act', 'Common Ownership Competition')
-old_ref = "<li>Common Ownership Competition <span class='act-ref'>§18</span></li>"
-new_ref = "<li>Common Ownership Competition <span class='act-ref'>§1</span></li>"
-if text.count(old_ref) != 1:
-    raise SystemExit(f'Expected one §18 Act reference; found {text.count(old_ref)}')
-text = text.replace(old_ref, new_ref, 1)
-
-check = text.splitlines()
-def check_bounds(section_id):
-    hits = [i for i, line in enumerate(check) if f'id:"{section_id}"' in line]
-    if len(hits) != 1:
-        raise SystemExit(f'Expected one {section_id} after patch')
-    start = hits[0]
-    ends = [i for i in range(start + 1, len(check)) if '    id:"sec-' in check[i]]
-    return start, (ends[0] if ends else len(check))
-
-s1, e1 = check_bounds('sec-1')
+# Validate the three patched policies remain in §1 and the old title is gone.
+sec1_start = text.index('id:"sec-1"')
+sec2_start = text.index('id:"sec-2"', sec1_start)
+sec1 = text[sec1_start:sec2_start]
 for title in ['Commercial Oligarchy Antitrust Clause', 'Cartel Restitution and Price-Fixing Penalty', 'Common Ownership Competition']:
-    needle = f'{{title:"{title}",'
-    hits = [i for i, line in enumerate(check) if needle in line]
-    if len(hits) != 1 or not (s1 < hits[0] < e1):
-        raise SystemExit(f'{title} is not uniquely located in §1')
-
-for wrong_section in ['sec-9', 'sec-banking']:
-    s, e = check_bounds(wrong_section)
-    block = '\n'.join(check[s:e])
-    for title in ['Commercial Oligarchy Antitrust Clause', 'Cartel Restitution and Price-Fixing Penalty', 'Common Ownership Competition']:
-        if f'{{title:"{title}",' in block:
-            raise SystemExit(f'{title} still appears as a policy in {wrong_section}')
-
+    if sec1.count(f'title:"{title}"') != 1:
+        raise SystemExit(f'{title} is not uniquely present in §1')
 if 'Common Ownership Competition Act' in text:
-    raise SystemExit('Old policy title remains')
+    raise SystemExit('Old Common Ownership policy title remains')
+if "<li>Common Ownership Competition <span class='act-ref'>§1</span></li>" not in text:
+    raise SystemExit('Act reference for Common Ownership Competition is not §1')
 if text.count('98.9') != version_count:
     raise SystemExit('Version markers changed')
 if '98.10' in text or '99.0' in text:
     raise SystemExit('Unexpected version bump')
 
 path.write_text(text, encoding='utf-8')
-print('v98.9 placement patch applied successfully')
+print('v98.9 syntax follow-up applied successfully')
