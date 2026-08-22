@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Political Policy Book: Version 98.14</title>
+<title>Political Policy Book: Version 98.15</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -199,7 +199,7 @@ body::before{
   position:relative;overflow:hidden;
 }
 #hero::after{
-  content:'98.14';
+  content:'98.15';
   position:absolute;right:-20px;top:-20px;
   font-family:var(--font-h);font-size:240px;font-weight:700;
   color:rgba(201,166,83,.04);line-height:1;
@@ -385,14 +385,24 @@ body::before{
 .institution-register{display:flex;flex-direction:column;border-top:1px solid var(--border)}
 .institution-row{
   display:grid;
-  grid-template-columns:minmax(170px,1.2fr) minmax(240px,2fr) minmax(145px,1fr) auto;
+  grid-template-columns:minmax(170px,1.1fr) minmax(220px,1.7fr) minmax(145px,.9fr) minmax(180px,1fr);
   gap:14px;align-items:start;
   padding:10px 0;border-bottom:1px solid var(--border);
 }
 .institution-name{color:var(--text);font-family:var(--font-h);font-size:.92rem;font-weight:600;line-height:1.25}
+.institution-name a{color:inherit;text-decoration-color:#2da2be;text-underline-offset:3px}
+.institution-name a:hover{color:#74d5e8}
 .institution-role{color:#a8b4cc;line-height:1.45}
 .institution-authority{color:var(--text-sub);font-size:.72rem;line-height:1.45}
-.institution-ref{color:var(--gold-lt);font-family:var(--font-m);font-size:.62rem;white-space:nowrap}
+.institution-ref{color:var(--text-sub);font-family:var(--font-m);font-size:.6rem;line-height:1.45}
+.institution-ref span{display:block;color:#2da2be;text-transform:uppercase;margin-bottom:2px}
+.institution-ref a{color:var(--gold-lt);text-decoration-color:var(--gold-dim);text-underline-offset:2px}
+.institution-ref a:hover{color:var(--gold)}
+.institution-ref-sep{display:inline !important;color:var(--text-dim) !important;margin:0 4px}
+.institution-pending{margin-top:18px;padding:16px;border:1px solid #2da2be;background:rgba(45,162,190,.06);border-radius:6px}
+.institution-pending-title{font-family:var(--font-m);font-size:.65rem;text-transform:uppercase;color:#74d5e8;margin-bottom:4px}
+.institution-pending-note{font-size:.74rem;color:var(--text-sub);line-height:1.5;margin-bottom:8px}
+.institution-pending .institution-register{border-top-color:#1f5865}
 
 /* ── FOREWORD STACK: nomenclature follows the foreword ── */
 #sec-foreword .policy-list{
@@ -837,10 +847,9 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
   /* Grids collapse */
   .phil-grid{grid-template-columns:1fr}
   .calc-grid{grid-template-columns:1fr}
-  .institution-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}
-  .institution-name{grid-column:1;grid-row:1}
-  .institution-ref{grid-column:2;grid-row:1}
-  .institution-role,.institution-authority{grid-column:1/-1}
+  .institution-row{grid-template-columns:1fr;gap:6px}
+  .institution-name,.institution-role,.institution-authority,.institution-ref{grid-column:1}
+  .institution-name{grid-row:auto}
 
   /* Hyper sections */
   .hyper-parent-header{padding:22px 20px}
@@ -963,7 +972,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
   <button id="mob-toggle" onclick="toggleSidebar()">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
-  <span id="mobile-header-title">Policy Book v98.14</span>
+  <span id="mobile-header-title">Policy Book v98.15</span>
   <button id="mobile-search-btn" onclick="openSearch()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
   </button>
@@ -975,7 +984,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- SIDEBAR -->
 <aside id="sidebar">
   <div id="sidebar-header">
-    <div class="version">Version 98.14 &nbsp;·&nbsp; Hearthism</div>
+    <div class="version">Version 98.15 &nbsp;·&nbsp; Hearthism</div>
     <h1>Political Policy Book</h1>
     <div class="tagline">"A society must be good and strong, or it will not remain good for long."</div>
   </div>
@@ -990,7 +999,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- MAIN -->
 <main id="main">
   <section id="hero">
-    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v98.14</div>
+    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v98.15</div>
     <h2>The Political Policy Book</h2>
     <p class="quote">"A society must be good and strong, or it will not remain good for long."</p>
     <div class="stat-row">
@@ -1039,13 +1048,15 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 // ═══════════════════════════════════════════════════════
 // NEW badges persist through every decimal release in the current whole-number
 // version. Clear the prior version's badges only when the next whole number ships.
-const institutionRegister = rows => `<div class="institution-register" role="list">${rows.map(([name,role,authority,ref]) => `
+const institutionSourceLinks = sources => sources.map(([label,id]) => `<a href="#${id}" onclick="jumpToPolicy('${id}');return false">${label}</a>`).join('<span class="institution-ref-sep">·</span>');
+const institutionRegister = rows => `<div class="institution-register" role="list">${rows.map(([name,role,authority,sources]) => `
   <div class="institution-row" role="listitem">
-    <div class="institution-name">${name}</div>
+    <div class="institution-name"><a href="#${sources[0][1]}" onclick="jumpToPolicy('${sources[0][1]}');return false">${name}</a></div>
     <div class="institution-role">${role}</div>
     <div class="institution-authority">${authority}</div>
-    <div class="institution-ref">${ref}</div>
+    <div class="institution-ref"><span>Source policy${sources.length > 1 ? 'ies' : ''}</span>${institutionSourceLinks(sources)}</div>
   </div>`).join('')}</div>`;
+const institutionPendingBox = rows => `<div class="institution-pending"><div class="institution-pending-title">Formal name and consolidation plan pending</div><div class="institution-pending-note">These functions require a new institutional home, but the book has not fixed a literal agency name or presumed that another net-new office is the answer. Existing federal bodies must be graded for consolidation, reassignment, or dissolution first.</div>${institutionRegister(rows)}</div>`;
 
 const DATA = [
   {
@@ -1072,69 +1083,59 @@ const DATA = [
   },
   {
     id:"sec-institutions", num:"⌂", title:"Institutional Index",
-    intro:"A reading map of the principal bodies this framework creates, reforms, replaces, or reassigns. The underlying policy cards control wherever this index abbreviates their terms.",
+    intro:"A map of the actual public bodies, institutional networks, funds, trusts, and service systems established or changed by this framework. Each entry identifies what the institution is and links to the policies that define it.",
     tags:["reform","governance"],
     isInstitutionIndex:true,
     policies:[
-      {title:"Created",sub:"New bodies, funds, and public institutions established by the framework.",body:institutionRegister([
-        ["National Health Development Corporation (NHDC)","Produces, licenses, and supplies medicines, equipment, hospitals, and essential care as a public competitor.","Federal public corporation and charter","§3"],
-        ["State Public Academies","Residential public academies for students selected by merit and public purpose.","State institutions under national standards","§6"],
-        ["American New Arrival Centers (ANACs)","Receive, document, orient, and integrate lawful new arrivals.","Federal arrival and integration network","§7"],
-        ["Department of Digital Integrity (DDI)","Enforces digital rights, platform accountability, and public data protections.","Federal department with statutory oversight","§9"],
-        ["Federal Enterprise Data Services","Provides shared public data infrastructure for government and lawful enterprise use.","Federal shared-service institution","§9"],
-        ["National Commercial Space Infrastructure Authority","Coordinates and develops national commercial space infrastructure.","Federal infrastructure authority","§9"],
-        ["American Way Forum","Publicly displays and judges recent American innovation.","National civic and industrial forum","§9"],
-        ["Office of Strategic Development","Coordinates long-term foreign development through durable capacity rather than scattered aid.","Federal foreign-development office","§10"],
-        ["Citizen Wealth Fund","Holds citizen-derived public wealth for citizen benefit and dividend.","Permanent citizen-benefit fund","§12"],
-        ["Development Centers","Provide local development, family, and opportunity infrastructure.","National network with local delivery","§12"],
-        ["Federal Recovery and Accountability Office","Recovers public losses and coordinates action against proven payment abuse.","Federal recovery and accountability office","§13"],
-        ["Tribal Industry Seed Fund","Capitalizes tribal enterprise through a revolving public fund.","Tribal development fund","§17"],
-        ["National Monetary Authority (NMA)","Governs currency and national monetary administration under public law.","Audited statutory monetary authority","§18"],
-        ["National Inheritance and Reserve Fund (NIRF)","Builds a permanent national estate for strategic investment and future generations.","Protected sovereign investment fund","§18"],
-        ["National Lending Authority (NLA)","Supplies a disciplined public lending option and institutional lending services.","Public lending authority under NMA custodianship","§18"],
-        ["Executive Investment Board and Congressional Investment Commission","Set and approve NIRF investment policy while separating elected oversight from trade execution.","Executive proposal and congressional approval","§18"],
-        ["National Design Academy","Develops design capacity and national standards for durable public works.","Federal academy","§19"],
-        ["Trades Commission","Coordinates trade standards, labor needs, and skilled-career pathways.","Federal trades body","§19"],
-        ["Family Public Centers (FPCs)","Concentrate practical family services in accessible local institutions.","Public family-service network","§21"],
-        ["National Technology & Skilled Labor College (TSLC)","Provides advanced technical and skilled-labor education outside the conventional university pipeline.","National public college","§22"],
-        ["Academic Institution Seed Fund","Finances qualified founders of new colleges through a revolving fund.","Federal education seed fund","§22"],
-        ["National Heritage Corps","Organizes national service around restoration, heritage, and civic inheritance.","Federal service corps","§23"],
-        ["Chamber of Communities","Carries regional, functional, and productive representation into the national legislature.","Constitutional chamber under Hyper-Reform","✦ I"]
+      {title:"Created",sub:"Formally named public bodies and institutional networks established by the framework.",body:institutionRegister([
+        ["National Health Development Corporation (NHDC)","A federally chartered public corporation that manufactures and licenses medicines and equipment, develops healthcare capacity, and supplies catastrophic-care infrastructure as a permanent public competitor.","Federal public corporation governed by a dual-branch charter.",[["NHDC Establishment","sec-3-p2"],["NHDC Charter Standard","sec-3-p14"]]],
+        ["Residential Academy","A tuition-free residential public school in each state for students with exceptional academic, technical, artistic, or leadership ability, selected through published and need-blind standards.","State-chartered residential public institution under national access, safeguarding, and audit standards.",[["State Public Academies","sec-6-p5"]]],
+        ["American New Arrival Centers (ANACs)","Reception and integration centers where participating immigrants complete lawful processing, English and civics instruction, work, and basic orientation under safeguards against captive labor.","Federal arrival and integration network.",[["American New Arrival Centers","sec-7-p1"]]],
+        ["Department of Digital Integrity (DDI)","A federal department enforcing digital ownership and lawful access to payment utilities, including protection against revocable pseudo-ownership and ideological de-platforming of legal commerce.","Federal department with statutory digital-market jurisdiction.",[["Department of Digital Integrity","sec-9-p5"]]],
+        ["National Commercial Space Infrastructure Authority","The public authority that builds and operates shared orbital infrastructure such as fuel depots, traffic management, communications relays, docking standards, and secure ground systems for commercial use.","Federal infrastructure authority funded in part through user fees and service contracts.",[["National Commercial Space Infrastructure Authority","sec-9-p21"]]],
+        ["American Way Forum (AWF)","A permanent national forum and showroom where citizens directly judge recent American products and innovations, publicly commending excellence and rebuking failure.","National civic and industrial forum with citizen voting.",[["American Way Forum","sec-9-p23"]]],
+        ["Office of Strategic Development","The coordinating office for major United States infrastructure and productive-investment programs abroad, with published contracts, milestones, financing terms, and audit results.","Federal foreign-development office led by a Senate-confirmed director and overseen by an inspector general and Congress.",[["Office of Strategic Development","sec-10-p8"],["Foreign Assistance Integrity Controls","sec-10-p9"]]],
+        ["Development Centers","Publicly accessible workforce institutions offering rapid training, certification, equipment, career transition, job placement, and a practical route into stable work.","National network with local public delivery and direct employer connections.",[["Development Centers","sec-12-p10"]]],
+        ["National Lending Authority (NLA)","A self-funding public commercial lender for authorized essential-purpose credit, designed to give households a transparent public option and impose competitive discipline on private lending.","Public lending authority held under National Monetary Authority custodianship with a legally separate ledger.",[["National Lending Authority","sec-banking-p6"],["NMA Custodianship of the NLA","sec-banking-p13"],["Lending Authority Ledger Lock","sec-banking-p14"]]],
+        ["Executive Investment Board and Congressional Investment Commission","The two policy-governance bodies for the NIRF: Cabinet officers propose investment policy and a bipartisan congressional commission approves or rejects it, while civil servants execute approved policy.","Executive proposal and bipartisan legislative approval separated from trade execution.",[["National Inheritance and Reserve Fund","sec-banking-p5"]]],
+        ["National Design Academy","A national training institution for industrial designers, craftspeople, architects, and stylists, linked to the Polytechnic Standard and the rebuilding of domestic design capacity.","Federal academy and specialized design pipeline.",[["National Design Academy","sec-character-p4"],["Polytechnic Standard","sec-6-p2"]]],
+        ["Family Public Centers (FPCs)","Local public institutions combining relationship education, marriage counseling, prenatal and maternal care, and access to family benefits under one roof.","Nationally supported community service network.",[["Family Public Centers","sec-family-p7"]]],
+        ["National Technology & Skilled Labor College (TSLC)","A public college network offering a narrow roster of high-need technical and skilled-labor degrees through campuses and live remote instruction, with priority pipelines into public laboratories, contractors, and service.","National public college and competitive tuition benchmark.",[["National Technology & Skilled Labor College","sec-higher-ed-p5"]]],
+        ["National Heritage Corps (NHC)","A public media, documentary, oral-history, and civic-event institution with Family, Military, and Civics & History branches, governed by a statutory doctrine of patriotic purpose without historical whitewashing or party propaganda.","Federal public-service corps with rotating regional boards and public-domain output.",[["National Heritage Corps","sec-23-p5"]]],
+        ["National Auto Insurance Corporation (NAIC)","A public auto insurer providing a transparent alternative in a market where government requires citizens to purchase coverage.","Public insurance corporation operating as a competitive option rather than an exclusive provider.",[["National Auto Insurance Corporation","sec-24-p16"]]],
+        ["Chamber of Communities","A proposed third chamber of Congress representing productive competence through delegates from industries, guilds, and regions, with representation recalculated by fixed formula after each census.","Constitutional legislative chamber established through Hyper-Reform.",[["Chamber of Communities","sec-hyper-reform-p0"]]]
+      ]) + institutionPendingBox([
+        ["Federal payment-recovery consolidation body","A single institutional home for forensic accounting, civil recovery, asset tracing, procurement and healthcare-payment expertise, and international financial investigation. The policy's current working name is the Federal Recovery and Accountability Office.","Final structure must follow an audit of existing inspectors general, GAO, Justice Department, Treasury, and agency recovery functions; consolidation or reassignment should precede any net-new bureaucracy.",[["Federal Payment Integrity System","sec-13-p22"],["Public Theft Enforcement Standard","sec-13-p23"],["Federal Recovery and Accountability Office","sec-13-p25"]]],
+        ["National skilled-trades standards body","The body responsible for craft standards, mastery certification, and the path from school to apprenticeship, journeyman, and master. The policy currently uses Trades Commission as a working name, but the final name must clearly distinguish skilled trades from commerce or securities regulation.","May consolidate the Labor Department apprenticeship function and related craft-standard responsibilities rather than sit beside redundant offices.",[["Polytechnic Standard","sec-6-p2"],["Apprenticeship Focus","sec-6-p3"],["Living Trades Preservation","sec-character-p5"],["Trades Commission","sec-character-p6"]]]
       ]),tags:["reform","governance"]},
-      {title:"Reformed",sub:"Existing institutions retained but given a different mandate, structure, or discipline.",body:institutionRegister([
-        ["Social Security Administration and Trust","Receive ordinary citizen and employer funding through the Well Being Tax, with the separate company-value NCC closing any remaining gap.","Federal retirement administration","§2, §12"],
-        ["Public Hospital System","Restructures hospitals around transparent pricing, capacity, and the NHDC public option.","Public and participating private providers","§3"],
-        ["Public Mental Health Institutions","Restores humane long-term treatment with judicial authorization, review, and patient rights.","Medical administration with judicial safeguards","§3"],
-        ["Public Education System","Reorients schooling toward mastery, apprenticeship, physical readiness, civic formation, and career integration.","State delivery under defined national standards","§6"],
-        ["Defense Acquisition System","Rebuilds procurement around competition, delivery, modularity, and contractor accountability.","Department of Defense with congressional oversight","§11"],
-        ["Federal Judiciary","Revises standing, executive-order review, remedies, and constitutional accountability.","Article III courts under constitutional rules","§13"],
-        ["Federal Workforce and Contractor Structure","Protects mission personnel while consolidating duplicative administration and testing contractor dependence.","Executive agencies with audit and cost review","§13"],
-        ["United States Postal Service","Reforms the national postal network around public service and operational durability.","Independent federal postal service","§13"],
-        ["Police and Corrections","Adds community oversight, disciplined deterrence, work, restoration, and record-clearing pathways.","State and local justice institutions","§12-13"],
-        ["Federal Permitting System","Replaces undifferentiated delay with class-based review and predictable approval tracks.","Coordinated federal permitting authorities","§15"],
-        ["Higher-Education System","Changes accreditation, tuition incentives, institutional risk, lending, and the skilled-education pipeline.","Federal eligibility rules with institutional competition","§22"],
-        ["Spectrum Licensing System","Converts passive warehousing into stewardship, productive use, sharing, rent, and reclamation.","Federal spectrum authority","§9"]
+      {title:"Reformed or Consolidated",sub:"Existing institutions retained, rebuilt, or placed into a clearer institutional home.",body:institutionRegister([
+        ["Social Security Administration","Continues administering retirement benefits while funding moves away from the legacy payroll tax to the Well Being Tax, trust earnings, and the separate company-value National Continuity Contribution.","Federal retirement-benefit administration; the trust funds are listed separately below.",[["Well Being Tax","sec-2-p3"],["National Continuity Contribution","sec-2-p4"],["Social Security Reform","sec-12-p6"]]],
+        ["Public hospital institutions","Public hospitals are reorganized around transparent billing, durable capacity, and coordination with NHDC production and catastrophic-care responsibilities.","Public and participating private delivery institutions operating under the healthcare framework.",[["Hospital Restructure","sec-3-p5"],["Funded Healthcare","sec-3-p6"],["National Healthcare Floor","sec-3-p10"]]],
+        ["Public mental-health institutions","Humane long-term treatment capacity is restored with judicial authorization, continuing review, clinical standards, and patient rights.","Medical institutions governed by judicial and clinical safeguards.",[["Mental Health Institutional Reform","sec-3-p12"]]],
+        ["Public education systems","State and local school institutions are reorganized around mastery, polytechnic education, apprenticeship, physical readiness, civic formation, and staged career integration.","State delivery under defined national standards and recurring audit.",[["Polytechnic Standard","sec-6-p2"],["Apprenticeship Focus","sec-6-p3"],["Decennial Educational Audit","sec-6-p14"],["Phase 4: Career Integration","sec-6-p18"]]],
+        ["Defense acquisition organizations","The Department of Defense procurement structure is rebuilt around competition, modularity, delivery, ownership disclosure, and contractor accountability.","Department of Defense acquisition bodies under congressional oversight.",[["Defense Procurement Reform","sec-11-p1"],["Procurement Competition and Ownership Disclosure","sec-13-p24"]]],
+        ["Federal judiciary","Article III courts receive revised standing, executive-order review, remedies, and constitutional-accountability rules while remaining the federal judicial branch.","Constitutional judiciary operating under amended jurisdiction and standing rules.",[["Federal Judiciary Limits on Executive Orders","sec-13-p18"],["Constitutional Accountability and Public Standing Amendment","sec-13-p30"]]],
+        ["Federal executive agencies and workforce","Mission personnel are preserved while duplicative administration, contractor dependence, improper payments, and overlapping functions are audited for consolidation or removal.","Executive departments and agencies subject to workforce, contractor, and performance review.",[["Great Audit","sec-13-p13"],["Federal Workforce and Contractor Structure Reform","sec-13-p28"]]],
+        ["United States Postal Service","The national postal institution is retained and reformed around universal public service, operational durability, and accountable management.","Independent federal postal service.",[["Postal Service Reform","sec-13-p14"]]],
+        ["State and local police and corrections institutions","Police and corrections add community oversight, residency, disciplined deterrence, paid work, restoration, and record-clearing pathways.","State and local justice institutions under constitutional safeguards.",[["Police Reform: Community Overseers","sec-12-p17"],["Police Residency Mandate","sec-12-p18"],["Prison Reform","sec-12-p19"]]],
+        ["Federal permitting agencies","Existing permitting authorities move to coordinated, class-based review with predictable approval tracks and transferable approvals.","Existing federal permitting bodies operating through the Class Permit System.",[["Class Permit System","sec-16-p1"],["Property-Attached Continuity","sec-16-p5"]]],
+        ["Higher-education accreditation and eligibility institutions","Accreditation and federal eligibility cease operating as a closed cartel and become competing, outcome-accountable pathways tied to cost and results.","Accreditors, education agencies, and participating institutions under reformed federal eligibility rules.",[["Outcome-Based Eligibility","sec-higher-ed-p7"],["Break the Accreditation Cartel","sec-higher-ed-p8"]]],
+        ["Federal spectrum administrator","The existing spectrum authority shifts from passive licensing toward measurable use, sharing, stewardship rent, corrective notice, and reclamation of persistently idle spectrum.","Existing federal spectrum administration under a statutory stewardship system.",[["Spectrum Stewardship System","sec-9-p18"]]]
       ]),tags:["reform","governance"]},
-      {title:"Replaced or Dissolved",sub:"Legacy structures removed because a different institution or legal mechanism takes their place.",body:institutionRegister([
-        ["Federal Reserve System","Replaced by the audited and removable National Monetary Authority.","Monetary responsibilities transfer to the NMA","§18"],
-        ["Private Health-Insurance Gatekeeping","Replaced by household-owned HSAs, direct provider choice, and NHDC catastrophic capacity.","Purchasing authority returns to households","§3"],
-        ["Legacy Payroll Tax","Abolished as a headcount-centered tax and replaced by distinct citizen, employer, and company-value mechanisms.","Well Being Tax and National Continuity Contribution","§2"],
-        ["Traditional Property Tax on the Family Home","Abolished while commercial and speculative land enters the Land Value Tax framework.","Land value replaces improvements and the primary home as the base","§2"],
-        ["Corporate Constitutional Personhood","Replaced by enumerated statutory business rights without citizenship or suffrage.","Business Bill of Rights","§13"],
-        ["Legacy Federal Permit Structure","Replaced by the Class Permit System and coordinated review.","Federal permitting authorities","§15"],
-        ["Accreditation Cartel","Broken open to competing, outcome-accountable accreditation pathways.","Federal education eligibility standards","§22"]
+      {title:"Funds, Trusts, and Service Systems",sub:"Institutional vehicles that hold assets or deliver shared services but are not presented as new governing agencies.",body:institutionRegister([
+        ["Citizen Wealth Fund","A sovereign citizen-benefit fund receiving designated public wealth and supporting debt reduction, major projects, and periodic citizen dividends.","Permanent public fund legally distinct from the NIRF and Social Security trust funds.",[["Citizen Wealth Fund","sec-12-p8"],["Citizen Data Royalty","sec-2-p22"]]],
+        ["National Inheritance and Reserve Fund (NIRF)","A protected national investment fund that compounds public capital for long-term income, strategic independence, and future generations.","Permanent fund with separate executive proposal, congressional approval, civil-service execution, and public audit.",[["National Inheritance and Reserve Fund","sec-banking-p5"]]],
+        ["Social Security trust funds","The retirement trusts continue holding dedicated assets and earning investment income while their revenue mix changes under the new funding structure.","Dedicated federal trust funds administered separately from general government and healthcare ledgers.",[["Three-Ledger Budget Standard","sec-2-p15"],["Social Security Trust Investment","sec-12-p9"]]],
+        ["Tribal Industry Seed Fund","A federally capitalized revolving fund providing long-term financing for sound tribal manufacturing, energy, tourism, and other business plans.","Revolving development fund, not a new administrative department.",[["Tribal Industry Seed Fund","sec-17-p6"]]],
+        ["Academic Institution Seed Fund","A revolving startup-capital program for qualified founders establishing new colleges and alternative higher-education institutions.","Federal education seed fund, not itself a college or regulator.",[["Academic Institution Seed Fund","sec-higher-ed-p12"]]],
+        ["Federal Enterprise Data Services","A paid reliability layer built above permanently free public datasets, offering enterprise APIs, service guarantees, formatting, provenance, retention, and support.","A shared federal service delivered through existing data-producing agencies unless later law assigns a consolidated operator.",[["Federal Enterprise Data Services","sec-9-p17"]]],
+        ["National Business Identity and Trust Utility","A shared public utility for verified business identity and trust information across federal transactions.","Federal digital utility rather than a free-standing policy department.",[["National Business Identity and Trust Utility","sec-13-p15"]]],
+        ["National Public-Asset Listing and Lease Exchange","A common public marketplace for transparent listing and leasing of federal assets.","Shared federal transaction platform.",[["National Public-Asset Listing and Lease Exchange","sec-13-p16"]]],
+        ["Unified Federal Procurement Market","A common procurement market intended to reduce fragmented purchasing, widen competition, and expose ownership and performance information.","Shared federal procurement system used by existing agencies.",[["Unified Federal Procurement Market","sec-13-p26"]]],
+        ["National Laboratory Patent Marketplace","A public marketplace connecting usable national-laboratory patents with firms capable of developing them.","Shared commercialization service across the national laboratories.",[["National Laboratory Patent Marketplace","sec-9-p16"]]]
       ]),tags:["reform","governance"]},
-      {title:"Reassigned",sub:"Responsibilities moved to the institution best fitted to carry them.",body:institutionRegister([
-        ["Monetary Governance","Moves from the Federal Reserve to the National Monetary Authority.","NMA","§18"],
-        ["Public Lending Custody","Places the National Lending Authority under National Monetary Authority custodianship while preserving a separate ledger.","NMA and NLA","§18"],
-        ["Routine Healthcare Purchasing","Moves from insurer permission to household-owned Health Savings Accounts.","Households and chosen providers","§3"],
-        ["Catastrophic Care and National Health Production","Moves to the NHDC public-capacity system while private delivery remains available.","NHDC","§3"],
-        ["Citizen Data Revenue","Routes the public royalty from data monetization to the Citizen Wealth Fund.","General Government collection; CWF benefit","§2, §12"],
-        ["Foreign Development Coordination","Moves scattered development efforts into the Office of Strategic Development.","Office of Strategic Development","§10"],
-        ["Federal Payment Recovery","Moves coordinated recovery and accountability work to a dedicated federal office.","Federal Recovery and Accountability Office","§13"],
-        ["Long-Term National Investment","Separates NIRF policy approval, civil-service execution, and public audit.","Investment Board, Commission, and investment office","§18"],
-        ["Community and Productive Representation","Moves a defined share of national representation into the Chamber of Communities under the Hyper-Reform structure.","Chamber of Communities","✦ I"],
-        ["National Skilled-Education Coordination","Connects practical standards, institutions, and career pathways through the Trades Commission and TSLC.","Trades Commission and TSLC","§19, §22"]
+      {title:"Explicitly Replaced or Dissolved",sub:"Existing institutions the policy book expressly removes; no additional dissolution is presumed without institutional grading.",body:institutionRegister([
+        ["Federal Reserve System","The existing Federal Reserve System is dissolved and its monetary responsibilities transfer to the publicly audited and removable National Monetary Authority.","Institutional replacement, not an additional monetary body layered beside the Federal Reserve.",[["National Monetary Authority","sec-banking-p4"]]]
       ]),tags:["reform","governance"]}
     ]
   },
