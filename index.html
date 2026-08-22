@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Political Policy Book: Version 98.13</title>
+<title>Political Policy Book: Version 98.14</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -158,6 +158,9 @@ body::before{
 .nav-item.nav-hyper{border-top:1px solid #2d1b5e;margin-top:4px;padding-top:10px}
 .nav-item.nav-hyper:hover{background:rgba(124,58,237,.06)}
 .nav-item.nav-hyper.active{color:#c084fc;border-left-color:#7c3aed;background:rgba(124,58,237,.1)}
+.nav-item.nav-institutions{border-top:1px solid #1f5865;margin-top:4px;padding-top:10px}
+.nav-item.nav-institutions:hover{color:#74d5e8;background:rgba(45,162,190,.07)}
+.nav-item.nav-institutions.active{color:#74d5e8;border-left-color:#2da2be;background:rgba(45,162,190,.12)}
 .nav-badge{
   margin-left:auto;
   font-size:.55rem;
@@ -196,7 +199,7 @@ body::before{
   position:relative;overflow:hidden;
 }
 #hero::after{
-  content:'98.13';
+  content:'98.14';
   position:absolute;right:-20px;top:-20px;
   font-family:var(--font-h);font-size:240px;font-weight:700;
   color:rgba(201,166,83,.04);line-height:1;
@@ -374,6 +377,11 @@ body::before{
 
 /* ── INSTITUTIONAL INDEX ── */
 #sec-institutions .policy-card.open .policy-body{max-height:7000px}
+.institutions-section .section-num{color:#74d5e8}
+.institutions-section .policy-card{border-color:#163d47}
+.institutions-section .policy-card:hover,.institutions-section .policy-card.open{border-color:#2da2be}
+.institutions-section .policy-card.open .policy-dot{background:#74d5e8}
+.institutions-section .policy-toggle:hover .policy-title,.institutions-section .policy-card.open .policy-title,.institutions-section .policy-card.open .policy-chevron{color:#74d5e8}
 .institution-register{display:flex;flex-direction:column;border-top:1px solid var(--border)}
 .institution-row{
   display:grid;
@@ -955,7 +963,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
   <button id="mob-toggle" onclick="toggleSidebar()">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
-  <span id="mobile-header-title">Policy Book v98.13</span>
+  <span id="mobile-header-title">Policy Book v98.14</span>
   <button id="mobile-search-btn" onclick="openSearch()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
   </button>
@@ -967,7 +975,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- SIDEBAR -->
 <aside id="sidebar">
   <div id="sidebar-header">
-    <div class="version">Version 98.13 &nbsp;·&nbsp; Hearthism</div>
+    <div class="version">Version 98.14 &nbsp;·&nbsp; Hearthism</div>
     <h1>Political Policy Book</h1>
     <div class="tagline">"A society must be good and strong, or it will not remain good for long."</div>
   </div>
@@ -982,7 +990,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- MAIN -->
 <main id="main">
   <section id="hero">
-    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v98.13</div>
+    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v98.14</div>
     <h2>The Political Policy Book</h2>
     <p class="quote">"A society must be good and strong, or it will not remain good for long."</p>
     <div class="stat-row">
@@ -1798,6 +1806,12 @@ const DATA = [
   },
 ];
 
+// Keep the institutional map with the book's standalone reference sections.
+const institutionalIndexPosition = DATA.findIndex(sec => sec.isInstitutionIndex);
+const institutionalIndex = DATA.splice(institutionalIndexPosition, 1)[0];
+const actsPosition = DATA.findIndex(sec => sec.isActs);
+DATA.splice(actsPosition + 1, 0, institutionalIndex);
+
 // ═══════════════════════════════════════════════════════
 // RENDER
 // ═══════════════════════════════════════════════════════
@@ -1820,7 +1834,7 @@ function buildNav() {
     }
 
     const a = document.createElement('div');
-    a.className = sec.isHyperReform ? 'nav-item nav-hyper nav-hyper-sub' : (sec.isActs ? 'nav-item nav-acts' : 'nav-item');
+    a.className = sec.isHyperReform ? 'nav-item nav-hyper nav-hyper-sub' : (sec.isActs ? 'nav-item nav-acts' : (sec.isInstitutionIndex ? 'nav-item nav-institutions' : 'nav-item'));
     a.dataset.secId = sec.id;
     a.setAttribute('role','button');
     a.setAttribute('tabindex','0');
@@ -1829,6 +1843,7 @@ function buildNav() {
     numSpan.className = 'nav-num';
     if(sec.isHyperReform) numSpan.style.color = '#7c3aed';
     if(sec.isActs) numSpan.style.color = 'var(--gold)';
+    if(sec.isInstitutionIndex) numSpan.style.color = '#2da2be';
     numSpan.textContent = sec.num;
 
     const titleSpan = document.createElement('span');
@@ -1888,7 +1903,7 @@ function buildContent() {
       return;
     }
 
-    el.className = 'section' + (sec.isHyperReform ? ' hyper-reform-section hyper-subsection-indent' : '') + (sec.isActs ? ' acts-section' : '');
+    el.className = 'section' + (sec.isHyperReform ? ' hyper-reform-section hyper-subsection-indent' : '') + (sec.isActs ? ' acts-section' : '') + (sec.isInstitutionIndex ? ' institutions-section' : '');
 
     const renderCard = (p,i) => `
           <div class="policy-card${p.isNew?' is-new':''}${p.isAbstract?' abstract-card':''}" id="${sec.id}-p${i}">
