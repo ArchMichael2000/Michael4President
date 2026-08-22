@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Studies | Better Policies</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0e14;--panel:#111722;--line:#263043;
+  --text:#e8edf5;--sub:#9ba8bc;--gold:#c9a653;--gold-lt:#e1c77f;
+  --green:#7bc8a4;--font-h:"Cormorant Garamond",serif;
+  --font-b:"DM Sans",sans-serif;--font-m:"Space Mono",monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-b);line-height:1.65}
+header{border-bottom:1px solid var(--line);background:#0e131c}
+.topbar,.page{width:min(980px,calc(100% - 36px));margin:0 auto}
+.topbar{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:var(--font-h);font-size:1.35rem;font-weight:700;color:var(--text)}
+.back{color:var(--gold-lt);font-size:.82rem;text-decoration:none}
+.back:hover{text-decoration:underline;text-underline-offset:4px}
+.page{padding:56px 0 72px}
+.eyebrow{font-family:var(--font-m);font-size:.66rem;color:var(--gold);text-transform:uppercase}
+h1{font-family:var(--font-h);font-size:clamp(2.35rem,6vw,4.2rem);line-height:1;margin:10px 0 16px;letter-spacing:0}
+.lede{max-width:760px;color:var(--sub);font-size:1rem;margin:0}
+.status{display:flex;align-items:center;gap:8px;margin-top:22px;color:var(--green);font-family:var(--font-m);font-size:.64rem;text-transform:uppercase}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+section{margin-top:48px}
+h2{font-family:var(--font-h);font-size:1.6rem;margin:0 0 12px;letter-spacing:0}
+.study-list{border-top:1px solid var(--line)}
+.study-row{display:grid;grid-template-columns:88px minmax(0,1fr) auto;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.format{font-family:var(--font-m);font-size:.64rem;color:var(--gold);border:1px solid #5e5233;padding:4px 8px;width:max-content}
+.study-name{font-family:var(--font-h);font-size:1.18rem;font-weight:600;line-height:1.25}
+.study-note{color:var(--sub);font-size:.8rem;margin-top:4px}
+.download{display:inline-flex;align-items:center;min-height:38px;padding:0 13px;border:1px solid var(--gold);color:var(--gold-lt);text-decoration:none;font-size:.75rem;font-weight:600}
+.download:hover{background:rgba(201,166,83,.1)}
+.scope{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.scope-item{background:var(--panel);padding:18px}
+.scope-item strong{display:block;font-size:.78rem;margin-bottom:5px}
+.scope-item span{color:var(--sub);font-size:.76rem;line-height:1.5}
+.note{border-left:2px solid var(--gold);padding:4px 0 4px 16px;color:var(--sub);font-size:.82rem;max-width:780px}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--sub);font-family:var(--font-m);font-size:.58rem}
+@media(max-width:680px){
+  .page{padding-top:38px}.study-row{grid-template-columns:70px 1fr}.download{grid-column:1/-1;width:100%;justify-content:center}
+  .scope{grid-template-columns:1fr}.topbar{min-height:56px}.brand{font-size:1.15rem}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">Better Policies</div>
+    <a class="back" href="../">Return to the Policy Book</a>
+  </div>
+</header>
+<main class="page">
+  <div class="eyebrow">Supporting research</div>
+  <h1>Fiscal Studies</h1>
+  <p class="lede">These studies test the affordability and fiscal resilience of the broader policy architecture. They remain separate from the Policy Book so updated assumptions, scenarios, and funding arrangements can develop without turning governing principles into a balance sheet.</p>
+  <div class="status">Active and continuing study program</div>
+
+  <section>
+    <h2>Current Releases</h2>
+    <div class="study-list">
+      <div class="study-row">
+        <div class="format">XLSX</div>
+        <div>
+          <div class="study-name">Deep Tax Burden Study, Version 35</div>
+          <div class="study-note">The working fiscal model, source controls, replacement ledgers, sensitivities, and quality-assurance sheets.</div>
+        </div>
+        <a class="download" href="Deep_Tax_Burden_Study_v35.xlsx" download>Download workbook</a>
+      </div>
+      <div class="study-row">
+        <div class="format">DOCX</div>
+        <div>
+          <div class="study-name">Innovative Tax Plan Overhaul, Version 27</div>
+          <div class="study-note">The narrative explanation of the tax architecture, revenue bases, program ledgers, and transition logic.</div>
+        </div>
+        <a class="download" href="Innovative_Tax_Plan_Overhaul_v27.docx" download>Download report</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Research Boundary</h2>
+    <div class="scope">
+      <div class="scope-item"><strong>Policies establish direction.</strong><span>The Policy Book states the institutions, rights, duties, and governing mechanisms being proposed.</span></div>
+      <div class="scope-item"><strong>Studies test affordability.</strong><span>Fiscal work examines whether the combined architecture can fund its transitions and sustain reliable government.</span></div>
+      <div class="scope-item"><strong>Models continue to develop.</strong><span>New sources and alternate funding arrangements may change the accounting without changing the policies themselves.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="note">The completed work supports the conclusion that the general policy architecture can produce a more robust revenue base and that sustained fiscal surpluses are possible and likely. The downloadable studies carry the calculations; the Policy Book carries the program.</p>
+  </section>
+</main>
+<footer><div class="topbar">Better Policies · Fiscal research library</div></footer>
+</body>
+</html>
