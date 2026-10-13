@@ -2385,7 +2385,7 @@ function jumpToPolicy(cardId) {
   if(!card.classList.contains('open')) card.classList.add('open');
   // Wait a tick for the DOM to expand, then scroll to the card precisely
   setTimeout(()=>{
-    const offset = window.innerWidth <= 900 ? 52 : 16;
+    const offset = cardId === 'sec-foreword-p2' ? document.getElementById('filter-bar').getBoundingClientRect().height + (window.innerWidth <= 900 ? 52 : 0) + 16 : (window.innerWidth <= 900 ? 52 : 16);
     const top = card.getBoundingClientRect().top + window.pageYOffset - offset;
     window.scrollTo({top, behavior:'smooth'});
     // Gold highlight flash
