@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Political Policy Book: Version 98.20</title>
+<title>Political Policy Book: Version 98.21</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -199,7 +199,7 @@ body::before{
   position:relative;overflow:hidden;
 }
 #hero::after{
-  content:'98.20';
+  content:'98.21';
   position:absolute;right:-20px;top:-20px;
   font-family:var(--font-h);font-size:240px;font-weight:700;
   color:rgba(201,166,83,.04);line-height:1;
@@ -969,6 +969,15 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
   .stat-card{min-width:160px}
   .policy-title{font-size:1.1rem}
 }
+
+/* Reference directory inside the Foreword. */
+.reference-toc{width:100%;border-collapse:collapse;margin:0;font-size:.8rem;line-height:1.5}
+.reference-toc caption{text-align:left;color:var(--text-sub);padding:0 0 12px}
+.reference-toc th,.reference-toc td{padding:12px 14px;border:1px solid var(--border-lit);text-align:left;vertical-align:middle}
+.reference-toc thead th{color:var(--gold-lt);background:var(--surface);font-family:var(--font-m);font-size:.65rem;text-transform:uppercase;letter-spacing:.05em}
+.reference-toc tbody th{font-weight:500}
+.reference-toc td:last-child{font-size:.72rem;color:var(--text-sub)}
+@media(max-width:600px){.reference-toc th,.reference-toc td{padding:9px 8px;font-size:.72rem}.reference-toc td:last-child{font-size:.65rem}.reference-toc caption{font-size:.75rem}}
 </style>
 </head>
 <body>
@@ -980,7 +989,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
   <button id="mob-toggle" onclick="toggleSidebar()">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
-  <span id="mobile-header-title">Policy Book v98.20</span>
+  <span id="mobile-header-title">Policy Book v98.21</span>
   <button id="mobile-search-btn" onclick="openSearch()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
   </button>
@@ -992,7 +1001,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- SIDEBAR -->
 <aside id="sidebar">
   <div id="sidebar-header">
-    <div class="version">Version 98.20 &nbsp;·&nbsp; Hearthism</div>
+    <div class="version">Version 98.21 &nbsp;·&nbsp; Hearthism</div>
     <h1>Political Policy Book</h1>
     <div class="tagline">"A society must be good and strong, or it will not remain good for long."</div>
   </div>
@@ -1007,7 +1016,7 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 <!-- MAIN -->
 <main id="main">
   <section id="hero">
-    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v98.20</div>
+    <div class="eyebrow">Hearthism &nbsp;·&nbsp; Policy Framework &nbsp;·&nbsp; v98.21</div>
     <h2>The Political Policy Book</h2>
     <p class="quote">"A society must be good and strong, or it will not remain good for long."</p>
     <div class="stat-row">
@@ -1840,6 +1849,19 @@ const DATA = [
   },
 ];
 
+
+// Reference pages are separate documents, reached through these hyperlinks.
+const referenceForeword = DATA.find(sec => sec.isForeword);
+referenceForeword.policies.push({"title":"Reference Table of Contents","sub":"The philosophy behind the book, and the fiscal framework under review.","body":"<table class=\"reference-toc\"><caption>Philosophical references and the fiscal framework</caption><thead><tr><th scope=\"col\">Reference</th><th scope=\"col\">Subject</th><th scope=\"col\">Status</th></tr></thead><tbody><tr><th scope=\"row\"><a href=\"/Markerism/\">Markerism</a></th><td>The overarching doctrine</td><td>Skeleton</td></tr><tr><th scope=\"row\"><a href=\"/America-Reborn/\">America Reborn</a></th><td>The civic idiom</td><td>Skeleton</td></tr><tr><th scope=\"row\"><a href=\"/Collegium/\">Collegium</a></th><td>The governing structure</td><td>Skeleton</td></tr><tr><th scope=\"row\"><a href=\"/Threefold-Voice/\">Threefold Voice</a></th><td>Consent, community, and competence</td><td>Skeleton</td></tr><tr><th scope=\"row\"><a href=\"/Producerism/\">Producerism</a></th><td>The economic philosophy</td><td>Skeleton</td></tr><tr><th scope=\"row\"><a href=\"/Hearthism/\">Hearthism</a></th><td>The social doctrine</td><td>Skeleton</td></tr><tr><th scope=\"row\"><a href=\"/Fiscal-Policy/\">Fiscal Policy</a></th><td>The proposed fiscal framework</td><td>Draft for review</td></tr></tbody></table>","tags":["reform","governance","finance"],"isReference":true});
+const nomenclatureReferenceLinks = [
+  ['Makerism','Markerism'],['America Reborn','America-Reborn'],['Producerism','Producerism'],['Hearthism','Hearthism']
+];
+const nomenclatureCard = referenceForeword.policies.find(p => p.title === 'Nomenclature');
+nomenclatureReferenceLinks.forEach(([label,slug]) => {
+  nomenclatureCard.body = nomenclatureCard.body.split("<span class='np-v'>"+label+"</span>").join("<span class='np-v'><a href='/"+slug+"/'>"+label+"</a></span>");
+});
+nomenclatureCard.body = nomenclatureCard.body.replace('Collegium + The Threefold Voice<small>',"<a href='/Collegium/'>Collegium</a> + <a href='/Threefold-Voice/'>The Threefold Voice</a><small>");
+
 // Keep the institutional map with the book's standalone reference sections.
 const institutionalIndexPosition = DATA.findIndex(sec => sec.isInstitutionIndex);
 const institutionalIndex = DATA.splice(institutionalIndexPosition, 1)[0];
@@ -2475,6 +2497,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildNav();
   buildContent();
   wireActLinks();
+  if(window.location.hash === '#sec-foreword-p2') jumpToPolicy('sec-foreword-p2');
   initCharts();
   DATA.forEach(sec=>{
     const el=document.getElementById(sec.id);
