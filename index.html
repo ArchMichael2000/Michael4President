@@ -978,6 +978,26 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 .reference-toc tbody th{font-weight:500}
 .reference-toc td:last-child{font-size:.72rem;color:var(--text-sub)}
 @media(max-width:600px){.reference-toc th,.reference-toc td{padding:9px 8px;font-size:.72rem}.reference-toc td:last-child{font-size:.65rem}.reference-toc caption{font-size:.75rem}}
+
+/* Home-loan comparison */
+.loan-comparison-intro{margin:-6px 0 16px;color:var(--text-sub);font-size:.8rem;line-height:1.55}
+.loan-shared-inputs{padding:14px;margin-bottom:14px;background:rgba(201,166,83,.05);border:1px solid var(--border);border-radius:6px}
+.loan-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.loan-panel{min-width:0;padding:18px;border:1px solid var(--border);border-radius:7px;background:var(--card)}
+.loan-panel-nla{border-top:2px solid var(--gold-dim)}
+.loan-panel-bank{border-top:2px solid var(--blue)}
+.loan-panel-heading{margin-bottom:14px}
+.loan-panel h5{font-family:var(--font-h);font-size:1.15rem;color:var(--gold-lt);font-weight:600}
+.loan-result{display:block;padding:0;background:transparent;border:0}
+.loan-result-lines{margin:0;display:grid;gap:0}
+.loan-result-lines div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--border)}
+.loan-result-lines dt{color:var(--text-sub)}
+.loan-result-lines dd{margin:0;color:var(--gold);text-align:right}
+.loan-result-lines .loan-result-total{margin-top:3px;padding-top:10px;border-bottom:0}
+.loan-result-lines .loan-result-total dt,.loan-result-lines .loan-result-total dd{color:var(--gold-lt);font-weight:700}
+.loan-comparison-footer{margin-top:14px;padding:12px 14px;border-left:2px solid var(--gold);background:rgba(201,166,83,.06);color:var(--text);font-size:.78rem;line-height:1.5}
+@media(max-width:720px){.loan-columns{grid-template-columns:1fr}.loan-panel{padding:16px}}
+
 </style>
 </head>
 <body>
@@ -1260,6 +1280,8 @@ const DATA = [
       {title:"Farmer Right to Breed & Improve",sub:"Farmers are producers, not merely licensed end-users of biology.",body:"Farmers may cross, graft, select, propagate, and improve living material they lawfully own and may commercialize genuinely distinct varieties produced through their own breeding work. Biological ancestry alone does not give an earlier breeder perpetual control over every later cross, adaptation, or independently developed line. Fraudulent branding and the false use of another breeder's protected variety name remain prohibited. Agricultural progress depends upon each generation being free to improve what the previous generation grew.",tags:["economy","liberty","reform"],isNew:true},
       {title:"American Breeder & Agricultural Innovation Reward",sub:"Reward the breeder without putting a deed on life.",body:"Breeders, researchers, universities, independent inventors, and agricultural companies remain financially rewarded through the sale of production stock, breeding and research services, voluntary commercial licenses, innovation prizes, research grants, procurement awards, and patents on qualifying tools and processes. Public programs may reward breakthroughs in yield, nutrition, resilience, disease resistance, storage, or regional adaptability. Agricultural innovation should remain lucrative without turning every future reproduction of a living organism into a royalty event.",tags:["economy","technology","reform"],isNew:true},
       {title:"Public Agricultural Germplasm Commons",sub:"What the public pays to discover, the public should eventually be free to grow.",body:"USDA expands the existing national germplasm system into an openly accessible Agricultural Germplasm Commons for publicly financed seeds, cultivars, rootstock, breeding lines, and agricultural cultures. After any defined commercialization period, qualifying material and its growing, disease, regional-trial, and breeding records become available to American farmers, universities, nurseries, researchers, and companies on equal terms. Commercial products may be developed from the material, but no downstream user may remove the underlying public germplasm from common access.",tags:["economy","technology","reform"],isNew:true},
+
+      {title:"American Chestnut Restoration Program",sub:"Return a great American tree to the forests, farms, and towns that once depended on it.",body:"The American chestnut once fed families and wildlife, supplied rot-resistant timber, and stood across eastern forests from Maine to Alabama. Chestnut blight reduced a living part of the country to surviving roots and scattered shoots. The tree remains. Its old forest has not been allowed to return.<br><br>The United States Department of Agriculture, United States Forest Service, land-grant universities, tribal foresters, state agencies, nurseries, and private landowners shall form an American Chestnut Restoration Program. The program will recover surviving American chestnut material, maintain a national living archive, expand breeding and propagation, and establish restoration groves in the regions where the tree once carried the forest. It will support disease-resistant American chestnut lines, biological controls that displace the destructive blight, and other targeted remedies that strengthen chestnuts against recurring disease while preserving the tree's American character.<br><br>Research will move from protected trials into wider restoration only through the ordinary federal plant-health and environmental review required for living biological controls. Every participating grove will be monitored for survival, fruiting, disease pressure, forest effects, and the return of local nursery stock. Publicly supported seed, scion, and research records will enter the Agricultural Germplasm Commons after the program's defined commercialization period, so a recovered American chestnut becomes a resource people can plant, tend, improve, and hand forward. Priority goes to family woodlots, working farms, tribal lands, public forests, and communities restoring durable local canopy and food-bearing trees.",tags:["economy","health","technology","reform"],isNew:true},
       {title:"Major Selling Point: Clean Food, Clean Water",isAbstract:true,sub:"The poisons come out of the food, the water, and the soil.",body:"Industrial and dietary poisons are phased out or taxed out, every tap meets a hard federal standard, lead pipes are gone by 2030, and real grain, real sugar, and real fats return to the American table.",tags:["reform"]},
       {title:"War on Poison",sub:"Dietary and industrial poisons. Phase them out or pay.",body:"We declare war on substances that damage the human body at the metabolic, neurological, endocrine, or carcinogenic level, introduced through food, agriculture, consumer products, and construction. Target categories include broad-spectrum herbicides, organophosphate and neonicotinoid insecticides, PFAS forever chemicals, industrial plasticizers, carcinogenic food additives, beta-agonist feed additives, reef-toxic UV filters, and VOC-based preservatives, many already banned across the EU, UK, and allied nations. Companies swapping one banned substance for a functionally equivalent poison face exponentially progressive fines, and import compliance matches domestic standards with no exceptions.<br><strong>Chopping Block (Phase 1):</strong><ul><li>Paraquat, herbicide and defoliant: banned across the EU, China, UK, and Brazil for severe neurotoxicity and confirmed links to Parkinson's Disease.</li><li>Asbestos (Chrysotile), fibrous insulator: banned across the EU, Australia, Japan, UK, and Canada for mesothelioma and lung cancer.</li><li>Glyphosate, broad-spectrum herbicide: restricted across the EU and Mexico as a probable carcinogen and endocrine disruptor.</li><li>PFAS (Per- and Polyfluoroalkyl Substances), forever chemicals: partially banned across the EU for carcinogenicity, thyroid disease, and permanent bioaccumulation in the human body.</li><li>Atrazine, triazine herbicide: banned across the EU for severe endocrine disruption and reproductive harm.</li><li>Phthalates (DEHP and related plasticizers): banned across the EU in toys and cosmetics for endocrine disruption, infertility, and birth defects.</li><li>Chlorpyrifos, organophosphate insecticide: banned across the EU, UK, and Canada for cognitive decline and developmental delay in children.</li><li>Potassium Bromate, baking oxidizer: banned across the EU, UK, Canada, Brazil, and China as a possible human carcinogen and renal toxin.</li><li>Titanium Dioxide (E171), food-grade nanoparticle pigment: banned across the EU for genotoxicity and suspected carcinogenicity.</li><li>Formaldehyde, preservative and resin component: banned in EU cosmetics as a known human carcinogen and respiratory irritant.</li><li>Imidacloprid, neonicotinoid insecticide: banned for outdoor use across the EU for pollinator die-offs and human developmental defects.</li><li>Azodicarbonamide, dough conditioner and blowing agent: banned across the EU, UK, and Australia for asthma and urethane formation.</li><li>Ractopamine, feed additive: banned in over 160 countries including the EU, China, and Russia for cardiovascular stress and tremors.</li><li>Triclosan, antibacterial agent: banned in EU biocides and US hand soaps for endocrine disruption and antibiotic resistance.</li><li>Oxybenzone, UV filter: banned across the EU and Pacific reef jurisdictions for endocrine disruption and coral reef bleaching.</li></ul>",tags:["health"]},
       {title:"National Water Quality Standard",sub:"A new federal baseline for what flows from every tap in America.",body:"We mandate a National Water Quality Standard across all municipal and public water systems, defining both beneficial mineral ranges and hard neurotoxin ceilings. Beneficial ranges: Zinc 0.1–1 mg/L, Copper 0.001–0.1 mg/L, Iron 0.001–0.1 mg/L, Fluoride 0.01–0.5 mg/L, Iodine 0.01–0.2 mg/L, Selenium 0.001–0.01 mg/L. Neurotoxic contaminants (Uranium, Cadmium, Thallium, Arsenic, Lead) are capped at <0.1 mcg/L. Mandatory thresholds, not targets. Non-compliant systems face a funded federal remediation timeline; repeated failure triggers federal administration until standards are met.",tags:["health"]},
@@ -2069,26 +2091,40 @@ function renderInteractive(type) {
       <div class="calc-result show" id="rn-result"></div>
     </div>`;
   if(type==='home-loan-calc') return `
-    <div class="calc-box">
-      <h4>🏠 NLA Housing Loan Calculator</h4>
-      <div class="calc-grid">
+    <div class="calc-box loan-comparison" aria-label="NLA and conventional mortgage comparison">
+      <h4>🏠 Home Loan Comparison</h4>
+      <p class="loan-comparison-intro">Use the same home price and down payment to see each path on its own terms.</p>
+      <div class="calc-grid loan-shared-inputs">
         <div class="field"><label>Home Price ($)</label><input type="number" id="hm-price" min="1" step="1000" value="300000" oninput="calcHomeLoan()"></div>
         <div class="field"><label>Down Payment (%)</label><input type="number" id="hm-down" min="0" max="99.9" step="0.5" value="10" oninput="calcHomeLoan()"></div>
-        <div class="field"><label>Conventional Mortgage Rate (%)</label><input type="number" id="hm-rate" min="0" max="30" step="0.01" value="7" oninput="calcHomeLoan()"></div>
-        <div class="field"><label>Conventional Mortgage Term</label><select id="hm-bank-term" onchange="calcHomeLoan()"><option value="10">10 years</option><option value="15">15 years</option><option value="20">20 years</option><option value="30" selected>30 years</option></select></div>
-        <div class="field"><label>NLA Loan Term</label><select id="hm-nla-term" onchange="calcHomeLoan()"><option value="5">5 years</option><option value="10">10 years</option><option value="15">15 years</option><option value="20" selected>20 years</option></select></div>
       </div>
-      <details class="mortgage-costs">
-        <summary>Adjust fee estimates</summary>
-        <div class="calc-grid">
-          <div class="field"><label>Shared Closing Costs (% of price)</label><input type="number" id="hm-close" min="0" max="20" step="0.1" value="2" oninput="calcHomeLoan()"></div>
-          <div class="field"><label>Bank Lender Fees (% of loan)</label><input type="number" id="hm-bank-fee" min="0" max="10" step="0.1" value="1" oninput="calcHomeLoan()"></div>
-          <div class="field"><label>Estimated PMI (% per year)</label><input type="number" id="hm-pmi" min="0" max="5" step="0.05" value="0.5" oninput="calcHomeLoan()"></div>
-        </div>
-        <p class="mortgage-note">Fees are paid at closing and are not added to the loan principal. Replace the estimates with lender quotes when available.</p>
-      </details>
-      <div class="calc-result show" id="hm-result"></div>
-      <div class="mortgage-note">The conventional loan uses standard monthly amortization, so early payments contain more interest. Fee estimates can be adjusted above; conventional PMI is estimated below 20% down and stops at 20% scheduled equity. The NLA estimate assumes no PMI. NLA interest is simple: 10% per year on unpaid principal, with no interest on accrued interest. Taxes, insurance, HOA dues, and maintenance are excluded.</div>
+      <div class="loan-columns">
+        <section class="loan-panel loan-panel-nla" aria-labelledby="nla-loan-title">
+          <div class="loan-panel-heading"><h5 id="nla-loan-title">NLA Housing Loan</h5></div>
+          <div class="field"><label>NLA Loan Term</label><select id="hm-nla-term" onchange="calcHomeLoan()"><option value="5">5 years</option><option value="10">10 years</option><option value="15">15 years</option><option value="20" selected>20 years</option></select></div>
+          <p class="mortgage-note">The NLA estimate uses simple interest at 10% per year on unpaid principal. It includes a $100 NLA fee and assumes no PMI.</p>
+          <div class="calc-result show loan-result" id="hm-nla-result" aria-live="polite"></div>
+        </section>
+        <section class="loan-panel loan-panel-bank" aria-labelledby="bank-loan-title">
+          <div class="loan-panel-heading"><h5 id="bank-loan-title">Conventional Mortgage</h5></div>
+          <div class="calc-grid">
+            <div class="field"><label>Mortgage Rate (%)</label><input type="number" id="hm-rate" min="0" max="30" step="0.01" value="7.4" oninput="calcHomeLoan()"></div>
+            <div class="field"><label>Mortgage Term</label><select id="hm-bank-term" onchange="calcHomeLoan()"><option value="10">10 years</option><option value="15">15 years</option><option value="20">20 years</option><option value="30" selected>30 years</option></select></div>
+          </div>
+          <details class="mortgage-costs">
+            <summary>Adjust closing-cost estimates</summary>
+            <div class="calc-grid">
+              <div class="field"><label>Closing Costs (% of price)</label><input type="number" id="hm-close" min="0" max="20" step="0.1" value="2" oninput="calcHomeLoan()"></div>
+              <div class="field"><label>Lender Fees (% of loan)</label><input type="number" id="hm-bank-fee" min="0" max="10" step="0.1" value="1" oninput="calcHomeLoan()"></div>
+              <div class="field calc-grid single"><label>Estimated PMI (% per year)</label><input type="number" id="hm-pmi" min="0" max="5" step="0.05" value="0.5" oninput="calcHomeLoan()"></div>
+            </div>
+            <p class="mortgage-note">Fees are paid at closing. Replace these estimates with lender quotes when available.</p>
+          </details>
+          <div class="calc-result show loan-result" id="hm-bank-result" aria-live="polite"></div>
+        </section>
+      </div>
+      <div class="loan-comparison-footer" id="hm-comparison" aria-live="polite"></div>
+      <div class="mortgage-note">The conventional loan uses standard monthly amortization, so early payments contain more interest. PMI is estimated below 20% down and stops at 20% scheduled equity. Taxes, insurance, HOA dues, and maintenance are excluded.</div>
     </div>`;
   if(type==='ss-calc') return `
     <div class="calc-box">
@@ -2172,10 +2208,13 @@ function calcHomeLoan() {
   const closePct=Number(document.getElementById('hm-close')?.value)/100;
   const bankFeePct=Number(document.getElementById('hm-bank-fee')?.value)/100;
   const pmiRate=Number(document.getElementById('hm-pmi')?.value)/100;
-  const result=document.getElementById('hm-result');
-  if(!result) return;
+  const nlaResult=document.getElementById('hm-nla-result');
+  const bankResult=document.getElementById('hm-bank-result');
+  const comparisonResult=document.getElementById('hm-comparison');
+  if(!nlaResult||!bankResult||!comparisonResult) return;
   if(!Number.isFinite(price)||price<=0||!Number.isFinite(downPct)||downPct<0||downPct>=100||!Number.isFinite(bankRate)||bankRate<0||!Number.isFinite(closePct)||closePct<0||!Number.isFinite(bankFeePct)||bankFeePct<0||!Number.isFinite(pmiRate)||pmiRate<0){
-    result.innerHTML='Enter a positive home price and valid percentages.';return;
+    const message='Enter a positive home price and valid percentages.';
+    nlaResult.innerHTML=message; bankResult.innerHTML=message; comparisonResult.textContent=''; return;
   }
   const down=price*downPct/100;
   const principal=price-down;
@@ -2193,15 +2232,10 @@ function calcHomeLoan() {
   const bankTotal=bankDue+conventional.totalPayments+conventional.pmi;
   const nlaTotal=nlaDue+nla.totalPayments;
   const diff=bankTotal-nlaTotal;
-  const comparison=diff>=0?`NLA estimate is ${money(diff)} lower overall.`:`NLA estimate is ${money(-diff)} higher overall.`;
-  result.innerHTML=`<div class="mortgage-table-wrap"><table class="mortgage-table"><thead><tr><th>Estimated cost</th><th>Conventional (${bankYears} yr, ${(bankRate*100).toFixed(2)}%)</th><th>NLA (${nlaYears} yr, 10%)</th></tr></thead><tbody>`+
-    `<tr><td>Monthly P&amp;I payment</td><td>${cents(conventional.monthlyPayment)}</td><td>${cents(nlaPayment)}</td></tr>`+
-    `<tr><td>Total interest</td><td>${money(conventional.interest)}</td><td>${money(nla.interest)}</td></tr>`+
-    `<tr><td>Upfront fees</td><td>${money(closing+bankFees)}</td><td>${money(closing+nlaFee)}</td></tr>`+
-    `<tr><td>Estimated PMI</td><td>${money(conventional.pmi)}</td><td>$0</td></tr>`+
-    `<tr><td>Cash due at closing</td><td>${money(bankDue)}</td><td>${money(nlaDue)}</td></tr>`+
-    `<tr><td>Total including down payment</td><td>${money(bankTotal)}</td><td>${money(nlaTotal)}</td></tr>`+
-    `</tbody></table></div><div style="margin-top:10px;color:var(--gold-lt)">${comparison}</div>`;
+  nlaResult.innerHTML=`<dl class="loan-result-lines"><div><dt>Loan amount</dt><dd>${money(principal)}</dd></div><div><dt>Monthly principal and interest</dt><dd>${cents(nlaPayment)}</dd></div><div><dt>Total interest</dt><dd>${money(nla.interest)}</dd></div><div><dt>Cash due at closing</dt><dd>${money(nlaDue)}</dd></div><div class="loan-result-total"><dt>Total including down payment</dt><dd>${money(nlaTotal)}</dd></div></dl>`;
+  bankResult.innerHTML=`<dl class="loan-result-lines"><div><dt>Loan amount</dt><dd>${money(principal)}</dd></div><div><dt>Monthly principal and interest</dt><dd>${cents(conventional.monthlyPayment)}</dd></div><div><dt>Total interest</dt><dd>${money(conventional.interest)}</dd></div><div><dt>Estimated PMI</dt><dd>${money(conventional.pmi)}</dd></div><div><dt>Cash due at closing</dt><dd>${money(bankDue)}</dd></div><div class="loan-result-total"><dt>Total including down payment</dt><dd>${money(bankTotal)}</dd></div></dl>`;
+  const comparison=diff>=0?`At these assumptions, the NLA estimate is ${money(diff)} lower over the full term.`:`At these assumptions, the conventional mortgage estimate is ${money(-diff)} lower over the full term.`;
+  comparisonResult.innerHTML=`<strong>Full-term comparison:</strong> ${comparison}`;
 }
 
 function simulateConventionalLoan(principal,homePrice,months,annualRate,pmiRate,downPct) {
