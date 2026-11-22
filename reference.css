@@ -14,3 +14,6 @@ h1,h2,h3{font-family:var(--heading);line-height:1.2;color:var(--text)}h1{font-si
 .related ul,.policy-links{list-style:none;padding:0}.related ul{display:flex;flex-wrap:wrap;gap:12px 24px}.policy-links li{margin-bottom:12px}.policy-links small{display:block;color:var(--muted)}
 .table-scroll{overflow-x:auto;max-width:100%;margin:20px 0}.table-scroll table{margin:0;min-width:600px}.table-scroll:focus-visible{outline:2px solid var(--gold-lt);outline-offset:4px}.download{display:inline-block;padding:12px 18px;border:1px solid var(--border);border-radius:6px;background:var(--surface)}.source-note{color:var(--muted);font-size:.85rem}.bibliography{font-size:.9rem}p,a{overflow-wrap:break-word}nav a[aria-current=page]{color:var(--text);text-decoration:none}
 @media print{body{background:white;color:#111}.page{max-width:none;padding:0}h1,h2,h3,a,.lede{color:#111}.skip,.contents,.book-link,.breadcrumb,footer,.related{display:none}.prose{max-width:none}.table-scroll{overflow:visible}.table-scroll table{min-width:0}h2,h3{break-after:avoid}tr{break-inside:avoid}.prose th{background:#eee;color:#111}.prose th,.prose td{border-color:#aaa}}
+
+html[data-theme="light"]{color-scheme:light;--bg:#f5f4ef;--surface:#fff;--card:#fff;--border:#b5b9bf;--text:#1c2431;--muted:#475569;--gold:#765407;--gold-lt:#694b06}
+html[data-theme="light"] a:hover{color:#3d300f}
