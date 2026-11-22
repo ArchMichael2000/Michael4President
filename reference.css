@@ -17,3 +17,13 @@ h1,h2,h3{font-family:var(--heading);line-height:1.2;color:var(--text)}h1{font-si
 
 html[data-theme="light"]{color-scheme:light;--bg:#f5f4ef;--surface:#fff;--card:#fff;--border:#b5b9bf;--text:#1c2431;--muted:#475569;--gold:#765407;--gold-lt:#694b06}
 html[data-theme="light"] a:hover{color:#3d300f}
+
+html[data-theme="contrast"]{color-scheme:dark;--bg:#000;--surface:#000;--card:#000;--card-hover:#191919;--border:#fff;--border-lit:#fff;--text:#fff;--text-sub:#fff;--text-dim:#fff;--muted:#fff;--sub:#fff;--gold:#ffeb00;--gold-lt:#ffeb00;--gold-dim:#ffeb00;--blue:#7cd7ff;--green:#a3ffad;--red:#ffb0b0;--new-bg:#000;--new-border:#fff;--new-text:#fff;--panel:#000;--line:#fff}
+html[data-theme="contrast"] body{background:#000!important;color:#fff!important}
+html[data-theme="contrast"] body *{background-color:#000!important;background-image:none!important;color:#fff!important;border-color:#fff!important;text-shadow:none!important;-webkit-text-fill-color:currentColor}
+html[data-theme="contrast"] body a,html[data-theme="contrast"] body a *{color:#ffeb00!important;text-decoration:underline!important}
+html[data-theme="contrast"] button,html[data-theme="contrast"] input,html[data-theme="contrast"] select{border:2px solid #fff!important;accent-color:#ffeb00}
+html[data-theme="contrast"] :focus-visible{outline:3px solid #ffeb00!important;outline-offset:3px}
+html[data-theme="contrast"] .tag-btn.active,html[data-theme="contrast"] input:checked{outline:3px solid #ffeb00;outline-offset:2px}
+html[data-theme="contrast"] .policy-body-inner,html[data-theme="contrast"] .policy-sub,html[data-theme="contrast"] .nav-item,html[data-theme="contrast"] .reading-meta,html[data-theme="contrast"] .eyebrow{font-size:1rem!important;line-height:1.6!important}
+html[data-theme="contrast"] dialog::backdrop{background:rgba(0,0,0,.9)}
