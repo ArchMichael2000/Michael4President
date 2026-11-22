@@ -1016,10 +1016,11 @@ mark{background:rgba(201,166,83,.25);color:var(--gold-lt);border-radius:2px;padd
 
 /* Appearance settings */
 .settings-trigger,.settings-close{display:inline-flex;align-items:center;justify-content:center;min-width:36px;min-height:36px;border:1px solid var(--border-lit);border-radius:5px;background:var(--card);color:var(--text);font-size:21px;cursor:pointer}
+.settings-trigger{border:0;background:transparent;font-size:16px}
 .settings-trigger:hover,.settings-close:hover{color:var(--gold);border-color:var(--gold)}
 .settings-trigger:focus-visible,.settings-close:focus-visible,#settings-dialog input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 #sidebar-header .settings-trigger{float:right;margin:-10px -8px 8px 10px}
-#mobile-header .settings-trigger{min-width:36px;min-height:36px;font-size:19px}
+#mobile-header .settings-trigger{min-width:36px;min-height:36px;font-size:16px}
 #settings-dialog{margin:auto;width:min(90vw,390px);padding:24px;border:1px solid var(--border-lit);border-radius:8px;background:var(--surface);color:var(--text);box-shadow:0 18px 70px rgba(0,0,0,.4)}
 #settings-dialog::backdrop{background:rgba(0,0,0,.65)}
 .settings-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
@@ -1045,6 +1046,7 @@ html[data-theme="contrast"] body{background:#000!important;color:#fff!important}
 html[data-theme="contrast"] body *{background-color:#000!important;background-image:none!important;color:#fff!important;border-color:#fff!important;text-shadow:none!important;-webkit-text-fill-color:currentColor}
 html[data-theme="contrast"] body a,html[data-theme="contrast"] body a *{color:#ffeb00!important;text-decoration:underline!important}
 html[data-theme="contrast"] button,html[data-theme="contrast"] input,html[data-theme="contrast"] select{border:2px solid #fff!important;accent-color:#ffeb00}
+html[data-theme="contrast"] .settings-trigger{border:0!important}
 html[data-theme="contrast"] :focus-visible{outline:3px solid #ffeb00!important;outline-offset:3px}
 html[data-theme="contrast"] .tag-btn.active,html[data-theme="contrast"] input:checked{outline:3px solid #ffeb00;outline-offset:2px}
 html[data-theme="contrast"] .policy-body-inner,html[data-theme="contrast"] .policy-sub,html[data-theme="contrast"] .nav-item,html[data-theme="contrast"] .reading-meta,html[data-theme="contrast"] .eyebrow{font-size:1rem!important;line-height:1.6!important}
